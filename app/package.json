@@ -1,0 +1,16 @@
+{
+  "name": "kumulos.kumulos",
+  "version": "0.0.7",
+  "description": "Testing",
+  "dependencies": {
+    "kumulos-react-native": "2.1.0-shoutem",
+    "xcode": "^0.8.9",
+    "plist": "1.2.0",
+    "lodash": "~4.17.4"
+  },
+  "rnpm": {
+    "commands": {
+      "postlink": "node node_modules/kumulos.kumulos/scripts/postlink.js"
+    }
+  }
+}

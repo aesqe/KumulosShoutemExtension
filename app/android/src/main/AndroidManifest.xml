@@ -1,0 +1,45 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kumulos.android.shoutem">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application>
+        <!-- Kumulos FCM handler -->
+        <service android:name="com.kumulos.android.FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".PushReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kumulos.push.RECEIVED" />
+                <action android:name="com.kumulos.push.OPENED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".LocationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.kumulos.android.shoutem.LocationReceiver.PROCESS_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="co.nearbee.api_key"
+            android:value="${nearbee_api_key}" />
+
+        <meta-data
+            android:name="co.nearbee.organization_id"
+            android:value="${nearbee_org_id}" />
+    </application>
+</manifest>
